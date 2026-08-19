@@ -1,0 +1,225 @@
+name: Update README
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update README statistics
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          from collections import Counter
+          from datetime import datetime, timezone
+          import re
+
+          ROOT = Path(".")
+          README = ROOT / "README.md"
+
+          IGNORE = {
+              ".git",
+              ".github",
+              "__pycache__",
+              "node_modules"
+          }
+
+          EXTENSIONS = {
+              ".c": "C",
+              ".cpp": "C++",
+              ".cc": "C++",
+              ".cxx": "C++",
+              ".py": "Python",
+              ".java": "Java",
+              ".js": "JavaScript",
+              ".ts": "TypeScript",
+              ".go": "Go",
+              ".rs": "Rust"
+          }
+
+          DIFFICULTIES = {
+              "easy": "Easy",
+              "medium": "Medium",
+              "hard": "Hard"
+          }
+
+          difficulty = Counter()
+          topics = Counter()
+          languages = Counter()
+          solutions = []
+
+          for file in ROOT.rglob("*"):
+
+              if not file.is_file():
+                  continue
+
+              if file == README:
+                  continue
+
+              if any(part in IGNORE for part in file.parts):
+                  continue
+
+              extension = file.suffix.lower()
+
+              if extension not in EXTENSIONS:
+                  continue
+
+              languages[EXTENSIONS[extension]] += 1
+
+              parts = list(file.parts[:-1])
+
+              found_difficulty = None
+
+              for part in parts:
+                  if part.lower() in DIFFICULTIES:
+                      found_difficulty = DIFFICULTIES[part.lower()]
+                      break
+
+              if found_difficulty:
+                  difficulty[found_difficulty] += 1
+
+              topic = None
+
+              for part in parts:
+                  if part.lower() not in DIFFICULTIES:
+                      topic = part
+                      break
+
+              if topic:
+                  topics[topic] += 1
+
+              solutions.append(file)
+
+          total = len(solutions)
+
+          recent = sorted(
+              solutions,
+              key=lambda x: x.stat().st_mtime,
+              reverse=True
+          )[:8]
+
+          def make_rows(counter):
+              if not counter:
+                  return "| — | 0 |"
+
+              return "\n".join(
+                  f"| {name} | {count} |"
+                  for name, count in sorted(
+                      counter.items(),
+                      key=lambda x: (-x[1], x[0].lower())
+                  )
+              )
+
+          recent_rows = "\n".join(
+              f"- `{file.as_posix()}`"
+              for file in recent
+          )
+
+          if not recent_rows:
+              recent_rows = "- —"
+
+          generated = f"""<!-- AUTO_STATS_START -->
+
+          <div align="center">
+
+          # `leetcode-dsa`
+
+          ### A growing collection of solved problems, patterns, and algorithms.
+
+          **{total} Problems Solved**
+
+          `Easy {difficulty["Easy"]}` &nbsp;•&nbsp;
+          `Medium {difficulty["Medium"]}` &nbsp;•&nbsp;
+          `Hard {difficulty["Hard"]}`
+
+          </div>
+
+          ---
+
+          ## Progress
+
+          | Difficulty | Solved |
+          |:---:|---:|
+          | 🟢 Easy | {difficulty["Easy"]} |
+          | 🟡 Medium | {difficulty["Medium"]} |
+          | 🔴 Hard | {difficulty["Hard"]} |
+          | **Total** | **{total}** |
+
+          ## Topics
+
+          | Topic | Problems |
+          |:---|---:|
+          {make_rows(topics)}
+
+          ## Languages
+
+          | Language | Problems |
+          |:---|---:|
+          {make_rows(languages)}
+
+          ## Recently Added
+
+          {recent_rows}
+
+          <div align="center">
+
+          <sub>
+          Statistics generated automatically from this repository.
+          <br>
+          Last update: {datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
+          </sub>
+
+          </div>
+
+          <!-- AUTO_STATS_END -->
+          """
+
+          content = README.read_text(encoding="utf-8")
+
+          pattern = r"<!-- AUTO_STATS_START -->.*?<!-- AUTO_STATS_END -->"
+
+          if re.search(pattern, content, flags=re.S):
+
+              content = re.sub(
+                  pattern,
+                  generated,
+                  content,
+                  count=1,
+                  flags=re.S
+              )
+
+          else:
+
+              content = generated + "\n\n" + content
+
+          README.write_text(
+              content,
+              encoding="utf-8"
+          )
+
+          PY
+
+      - name: Commit README
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add README.md
+
+          if git diff --cached --quiet; then
+            echo "README is already up to date."
+          else
+            git commit -m "chore: update README statistics"
+            git push
+          fi
