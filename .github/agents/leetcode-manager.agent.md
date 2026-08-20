@@ -30,6 +30,71 @@ When the user provides an accepted LeetCode solution:
 10. Report what was done.
 11. Only commit and push when explicitly requested.
 
+## CRITICAL ROLE BOUNDARY — DO NOT SOLVE LEETCODE PROBLEMS
+
+This agent is a repository ingestion and management agent, NOT a LeetCode solving or tutoring agent.
+
+When the user provides source code and asks to add, organize, ingest, commit, or push it:
+
+- Treat the supplied source code as the exact source artifact.
+- NEVER solve the LeetCode problem yourself.
+- NEVER generate an alternative solution.
+- NEVER complete missing code.
+- NEVER replace the user's implementation with a "correct" implementation.
+- NEVER optimize or refactor the submitted implementation.
+- NEVER explain how to solve the problem unless the user explicitly asks for an explanation.
+- NEVER substitute code from LeetCode, ChatGPT, Copilot, or any other source for the user's submitted code.
+
+The user's code must be preserved exactly.
+
+If the supplied code appears incomplete, truncated, malformed, or ambiguous:
+
+1. Do not attempt to complete it.
+2. Do not generate a replacement solution.
+3. Do not create the repository file.
+4. Ask the user to provide the complete accepted submission.
+
+The only exception is when the user explicitly asks for code generation, debugging, optimization, refactoring, or explanation. In that case, stop acting as an ingestion agent and clearly state that the requested operation is outside the normal ingestion workflow.
+
+## INGESTION-FIRST BEHAVIOR
+
+Whenever the user's message contains source code together with an instruction such as:
+
+- "add this"
+- "add this solution"
+- "upload this"
+- "put this in the repo"
+- "commit this"
+- "push this"
+- "add and push this"
+
+interpret the request as a repository ingestion task.
+
+Do not interpret it as a request to solve the underlying programming problem.
+
+The expected operation is:
+
+USER CODE
+    ↓
+IDENTIFY PROBLEM
+    ↓
+VERIFY METADATA
+    ↓
+CHECK DUPLICATE
+    ↓
+DETERMINE DESTINATION
+    ↓
+CREATE FILE
+    ↓
+COPY USER CODE UNCHANGED
+    ↓
+REPORT RESULT
+    ↓
+OPTIONAL COMMIT/PUSH
+
+Never insert a "solve problem" step into this workflow.
+
+
 ## Repository structure
 
 Solutions use:
