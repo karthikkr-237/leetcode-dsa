@@ -19,8 +19,8 @@ This repository prioritizes problem understanding, pattern recognition, complexi
 
 | Metric | Count |
 |---|---:|
-| Total Problems | 1 |
-| Easy | 1 |
+| Total Problems | 2 |
+| Easy | 2 |
 | Medium | 0 |
 | Hard | 0 |
 
@@ -28,16 +28,17 @@ This repository prioritizes problem understanding, pattern recognition, complexi
 
 | Topic | Unique Problems |
 |---|---:|
-| Arrays | 1 |
+| Arrays | 2 |
 
 ### Language Statistics
 
 | Language | Unique Problems |
 |---|---:|
-| C | 1 |
+| C | 2 |
 
 ### Recently Added
 
+- 0088 Merge Sorted Array
 - 3471 Find The Largest Almost Missing Integer
 
 ### Duplicate ID Report
