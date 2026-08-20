@@ -1,58 +1,46 @@
-<!-- AUTO_STATS_START -->
-
-<div align="center">
-
-# `leetcode-dsa`
-
-### A growing collection of solved problems, patterns, and algorithms.
-
-**0 Problems Solved**
-
-`Easy 0` &nbsp;•&nbsp;
-`Medium 0` &nbsp;•&nbsp;
-`Hard 0`
-
-</div>
-
----
-
-## Progress
-
-| Difficulty | Solved |
-|:---:|---:|
-| 🟢 Easy | 0 |
-| 🟡 Medium | 0 |
-| 🔴 Hard | 0 |
-| **Total** | **0** |
-
-## Topics
-
-| Topic | Problems |
-|:---|---:|
-| — | 0 |
-
-## Languages
-
-| Language | Problems |
-|:---|---:|
-| — | 0 |
-
-## Recently Added
-
-- —
-
-<div align="center">
-
-<sub>
-Statistics generated automatically from this repository.
-<br>
-Last update: 2026-08-19 18:54 UTC
-</sub>
-
-</div>
-
-<!-- AUTO_STATS_END -->
-
-
 # leetcode-dsa
-My solutions to LeetCode problems, organized by topic and difficulty.
+
+A structured collection of LeetCode solutions and DSA practice.
+
+## Structure
+
+Solutions are organized as:
+
+`Topic / Difficulty / <problem-number>-<problem-name>.<extension>`
+
+Example: `Arrays/Easy/0001-two-sum.cpp`
+
+## Methodology
+
+This repository prioritizes problem understanding, pattern recognition, complexity analysis, and clean implementations. Statistics are derived strictly from tracked solution files.
+
+<!-- AUTO_STATS_START -->
+## Repository Statistics
+
+| Metric | Count |
+|---|---:|
+| Total Problems | 0 |
+| Easy | 0 |
+| Medium | 0 |
+| Hard | 0 |
+
+### Topic Statistics
+
+| Topic | Unique Problems |
+|---|---:|
+| None | 0 |
+
+### Language Statistics
+
+| Language | Unique Problems |
+|---|---:|
+| None | 0 |
+
+### Recently Added
+
+- None
+
+### Duplicate ID Report
+
+No duplicate topic/difficulty metadata conflicts detected.
+<!-- AUTO_STATS_END -->
