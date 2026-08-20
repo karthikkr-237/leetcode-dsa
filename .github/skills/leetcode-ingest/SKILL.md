@@ -8,6 +8,24 @@ description: Ingests an accepted LeetCode solution into the repository by verify
 
 Use this skill when the user provides an accepted LeetCode solution and wants it added to the `leetcode-dsa` repository.
 
+## IMPORTANT — INGESTION ONLY
+
+This skill exists to ingest an already-written LeetCode solution into the repository.
+
+It is NOT a problem-solving skill.
+
+Never generate, complete, replace, optimize, refactor, or correct the user's submitted solution.
+
+The submitted code must be treated as immutable source content.
+
+If the supplied code is incomplete:
+
+- stop
+- do not create or modify a solution file
+- ask the user for the complete code
+
+Never provide an alternative LeetCode solution as part of an ingestion operation.
+
 ## Input
 
 The user may provide:
