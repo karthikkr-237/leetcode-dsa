@@ -19,23 +19,23 @@ This repository prioritizes problem understanding, pattern recognition, complexi
 
 | Metric | Count |
 |---|---:|
-| Total Problems | 8 |
+| Total Problems | 9 |
 | Easy | 7 |
-| Medium | 1 |
+| Medium | 2 |
 | Hard | 0 |
 
 ### Topic Statistics
 
 | Topic | Unique Problems |
 |---|---:|
-| Arrays | 7 |
+| Arrays | 8 |
 | Greedy | 1 |
 
 ### Language Statistics
 
 | Language | Unique Problems |
 |---|---:|
-| C | 8 |
+| C | 9 |
 
 ### Recently Added
 
@@ -46,7 +46,7 @@ This repository prioritizes problem understanding, pattern recognition, complexi
 - 0088 Merge Sorted Array
 - 0268 Missing Number
 - 3471 Find The Largest Almost Missing Integer
-- 1927 Sum Game
+- 0080 Remove Duplicates From Sorted Array Ii
 
 ### Duplicate ID Report
 
