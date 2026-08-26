@@ -19,23 +19,23 @@ This repository prioritizes problem understanding, pattern recognition, complexi
 
 | Metric | Count |
 |---|---:|
-| Total Problems | 10 |
+| Total Problems | 11 |
 | Easy | 8 |
-| Medium | 2 |
+| Medium | 3 |
 | Hard | 0 |
 
 ### Topic Statistics
 
 | Topic | Unique Problems |
 |---|---:|
-| Arrays | 9 |
+| Arrays | 10 |
 | Greedy | 1 |
 
 ### Language Statistics
 
 | Language | Unique Problems |
 |---|---:|
-| C | 10 |
+| C | 11 |
 
 ### Recently Added
 
