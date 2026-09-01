@@ -19,8 +19,8 @@ This repository prioritizes problem understanding, pattern recognition, complexi
 
 | Metric | Count |
 |---|---:|
-| Total Problems | 11 |
-| Easy | 8 |
+| Total Problems | 12 |
+| Easy | 9 |
 | Medium | 3 |
 | Hard | 0 |
 
@@ -28,14 +28,14 @@ This repository prioritizes problem understanding, pattern recognition, complexi
 
 | Topic | Unique Problems |
 |---|---:|
-| Arrays | 10 |
+| Arrays | 11 |
 | Greedy | 1 |
 
 ### Language Statistics
 
 | Language | Unique Problems |
 |---|---:|
-| C | 11 |
+| C | 12 |
 
 ### Recently Added
 
@@ -44,9 +44,9 @@ This repository prioritizes problem understanding, pattern recognition, complexi
 - 0027 Remove Element
 - 0035 Search Insert Position
 - 0088 Merge Sorted Array
+- 0121 Best Time To Buy And Sell Stock
 - 0169 Majority Element
 - 0268 Missing Number
-- 3471 Find The Largest Almost Missing Integer
 
 ### Duplicate ID Report
 
